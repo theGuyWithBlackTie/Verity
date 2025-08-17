@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+smolagents = "==1.21.1"
+faiss-cpu = "==1.12.0"
+pymupdf = "==1.26.3"
+notebook = "==7.4.5"
+litellm = "==1.75.7"
+gradio = "==5.42.0"
+
+[dev-packages]
+
+[requires]
+python_version = "3.10"
