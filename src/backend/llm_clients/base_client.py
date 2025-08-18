@@ -1,3 +1,5 @@
+import litellm
+
 class BaseLLMClient:
     """
     Base class for LLM clients.
@@ -6,6 +8,16 @@ class BaseLLMClient:
 
     def __init__(self, model_name: str):
         self.model_name = model_name
+
+    def call(self, prompt: str) -> litellm.types.utils.ModelResponse:
+        """
+        Call the LLM with the provided prompt.
+        """
+        response = litellm.completion(
+            model = self.model_name,
+            messages = prompt
+        )
+        return response.get("choices", [{}])[0].get("message", {}).get("content", "")
 
     def generate_text(self, prompt: str) -> str:
         """
