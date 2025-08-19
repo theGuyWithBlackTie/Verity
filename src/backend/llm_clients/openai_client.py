@@ -14,6 +14,9 @@ class OpenAILLMClient(BaseLLMClient):
         """Get the output from the OpenAI model."""
         response = self.call(prompt)
         
-        return json.loads(
-            response.strip("`json\n")
-        )
+        # Assuming the response is a JSON string, we parse it
+        try:
+            return json.loads(response.strip("`json\n"))
+        except json.JSONDecodeError:
+            print("Error decoding JSON response. Invalid JSON format or response is in raw string format.")
+            return response
