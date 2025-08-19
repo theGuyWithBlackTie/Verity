@@ -1,0 +1,17 @@
+llms:
+  - name: openai-gpt4o
+    model: gpt-4o
+    temperature: 0.1
+    top_p = 0.1
+    max_tokens: 16384
+
+  - name: openai-gpt5-nano
+    model: gpt-5-nano
+    temperature: 1
+    max_completion_tokens: 128000
+
+  - name: ollama-qwen3
+    model: ollama_chat/qwen3:4b
+
+llm_to_use:
+  openai-gpt5-nano
