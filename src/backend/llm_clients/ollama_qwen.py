@@ -6,7 +6,7 @@ import litellm
 from base_client import BaseLLMClient
 
 class OllamaQwenLLMClient(BaseLLMClient):
-    def __init__(self, model_name):
+    def __init__(self, model_name, **kwargs):
         super().__init__(model_name)
 
     def generate_text(self, prompt):

@@ -6,7 +6,7 @@ import litellm
 from base_client import BaseLLMClient
 
 class OpenAILLMClient(BaseLLMClient):
-    def __init__(self, model_name):
+    def __init__(self, model_name, **kwargs):
         super().__init__(model_name)
         litellm.api_key = os.getenv("OPENAI_API_KEY")
 

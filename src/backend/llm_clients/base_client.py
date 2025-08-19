@@ -6,8 +6,9 @@ class BaseLLMClient:
     This class should be extended by specific LLM client implementations.
     """
 
-    def __init__(self, model_name: str):
+    def __init__(self, model_name: str, **kwargs):
         self.model_name = model_name
+        self.kwargs = kwargs
 
     def call(self, prompt: str) -> litellm.types.utils.ModelResponse:
         """
@@ -15,7 +16,8 @@ class BaseLLMClient:
         """
         response = litellm.completion(
             model = self.model_name,
-            messages = prompt
+            messages = prompt,
+            **self.kwargs
         )
         return response.get("choices", [{}])[0].get("message", {}).get("content", "")
 
