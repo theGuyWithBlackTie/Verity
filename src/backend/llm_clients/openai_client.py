@@ -3,7 +3,7 @@ import json
 
 import litellm
 
-from base_client import BaseLLMClient
+from .base_client import BaseLLMClient
 
 class OpenAILLMClient(BaseLLMClient):
     def __init__(self, model_name, **kwargs):

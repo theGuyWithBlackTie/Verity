@@ -1,8 +1,8 @@
 import yaml
 import os
 
-from llm_clients.openai_client import OpenAILLMClient
-from llm_clients.ollama_qwen import OllamaQwenLLMClient
+from .llm_clients.openai_client import OpenAILLMClient
+from .llm_clients.ollama_qwen import OllamaQwenLLMClient
 
 class Backend:
     def __init__(self):
@@ -11,7 +11,7 @@ class Backend:
             self.config = yaml.safe_load(file)
 
         # Initialize LLM client based on configuration
-        self.main_llm_client = self.initialize_llm_client()
+        self.main_llm_client = self.initialize_llm_client("main")
 
 
     def initialize_llm_client(self, which_service_llm):
