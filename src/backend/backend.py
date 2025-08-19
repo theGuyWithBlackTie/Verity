@@ -20,11 +20,13 @@ class Backend:
         if not llm_name:
             raise ValueError(f"LLM name for {which_service_llm} is not specified in the configuration.")
         
+        kwargs = self.config.get("llm_kwargs").get(llm_name, {})
+        
         # Determine the type of LLM client to use
         if "openai" in llm_name.lower():
             return OpenAILLMClient(model_name=llm_name)
         elif "qwen3" in llm_name.lower():
-            return OllamaQwenLLMClient
+            return OllamaQwenLLMClient(model_name=llm_name)
         else:
             raise ValueError(f"Unsupported LLM client type: {client_type}")
         
