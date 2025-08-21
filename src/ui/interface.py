@@ -20,16 +20,18 @@ class GradioApp:
                     gr.Markdown("### Upload Files")
                     self.file_upload = gr.File(label="Upload your documents here", file_count="multiple", file_types=[".pdf", ".txt", ".docx"], type="filepath")
                     self.upload_button = gr.Button("Start Processing", variant="primary")
+                    self.summary_box = gr.Textbox(label="Summary of Uploaded Files", placeholder="Computing Summary...", visible=False)
 
 
-                with gr.Column(scale=2):
+                with gr.Column(scale=1.5):
                     gr.Markdown("### Ask and Chat")
                     self.query_input = gr.Textbox(label="Ask a question about the uploaded files", placeholder="Type your question here...")
                     self.chat_output = gr.Chatbot(label="Chat Output")
 
                 self.upload_button.click(
                     fn=self.process_files,
-                    inputs=self.file_upload
+                    inputs=self.file_upload,
+                    outputs=[self.summary_box, self.summary_box]
                     )
     
     def process_files(self, file_paths):
@@ -40,4 +42,4 @@ class GradioApp:
         # Simulate processing and return a response
         response = f"Processed {len(file_paths)} files successfully."
         print(response)  # For debugging purposes
-        return response
+        return response, gr.update(visible=True)
