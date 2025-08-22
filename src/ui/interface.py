@@ -39,6 +39,7 @@ class GradioApp:
         if not file_paths:
             return "No files uploaded."
         
+        print(file_paths)
         # Simulate processing and return a response
         response = f"Processed {len(file_paths)} files successfully."
         print(response)  # For debugging purposes
