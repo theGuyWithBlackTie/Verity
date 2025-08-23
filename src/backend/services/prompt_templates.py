@@ -22,10 +22,10 @@ The document is being processed **page by page**, and you are receiving one page
 
 ## Output Format:
 Provide your output in JSON format as shown below:
-{
+{{
     "summary": <Your summary here>,
     "is_summary_introductory_enough": <True or False>,
     "explanation": <Why do you think summary is introductory enough?>
-}
+}}
 Assistant:
 """

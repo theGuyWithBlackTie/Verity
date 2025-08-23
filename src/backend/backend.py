@@ -1,10 +1,9 @@
 import yaml
 import os
 
-from .llm_clients.openai_client import OpenAILLMClient
-from .llm_clients.ollama_qwen import OllamaQwenLLMClient
-from .extractors.pdf_extractor import PDFExtractor
-from .extractors.docx_extractor import DocxExtractor
+from src.backend.services.introductory_summary import IntroductorySummaryService
+from src.backend.llm_clients.openai_client import OpenAILLMClient
+from src.backend.llm_clients.ollama_qwen import OllamaQwenLLMClient
 
 class Backend:
     def __init__(self):
@@ -17,6 +16,7 @@ class Backend:
 
         # Initialize LLM client for summarization
         self.summarization_llm_client = self.initialize_llm_client("summarization")
+        self.introductory_summary_service = IntroductorySummaryService(self.summarization_llm_client)
 
 
     def initialize_llm_client(self, which_service_llm: str):
@@ -37,6 +37,6 @@ class Backend:
         
     
     def generate_introductory_summary(self, file_paths: list[str]):
-        """
-        """
-        
+        """Generate an introductory summary for the provided documents."""
+        return self.introductory_summary_service.generate_summary(file_paths)
+

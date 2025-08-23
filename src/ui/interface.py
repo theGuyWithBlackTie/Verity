@@ -39,8 +39,8 @@ class GradioApp:
         if not file_paths:
             return "No files uploaded."
         
-        print(file_paths)
-        # Simulate processing and return a response
-        response = f"Processed {len(file_paths)} files successfully."
-        print(response)  # For debugging purposes
+        summaries = self.backend.generate_introductory_summary(file_paths)
+        response = ""
+        for file_name, summary in summaries.items():
+            response += f"**{file_name}**:\n {summary}\n\n\n"
         return response, gr.update(visible=True)

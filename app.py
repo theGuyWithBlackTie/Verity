@@ -18,7 +18,7 @@ def main():
         title ="Verity",
         description = "Uncover the truth in your documents"
     )
-    app.demo.launch(server_name="127.0.0.1", server_port=7071)
+    app.demo.launch(server_name="127.0.0.1", server_port=7071, share=True)
 
 
 if __name__ == "__main__":

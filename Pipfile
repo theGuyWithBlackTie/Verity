@@ -10,6 +10,8 @@ pymupdf = "==1.26.3"
 notebook = "==7.4.5"
 litellm = "==1.75.7"
 gradio = "==5.42.0"
+python-docx = "==1.2.0"
+tiktoken = "==0.11.0"
 
 [dev-packages]
 

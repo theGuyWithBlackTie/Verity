@@ -10,13 +10,13 @@ class BaseLLMClient:
         self.model_name = model_name
         self.kwargs = kwargs
 
-    def call(self, prompt: str) -> litellm.types.utils.ModelResponse:
+    def _call(self, messages: list) -> litellm.types.utils.ModelResponse:
         """
         Call the LLM with the provided prompt.
         """
         response = litellm.completion(
             model = self.model_name,
-            messages = prompt,
+            messages = messages,
             **self.kwargs
         )
         return response.get("choices", [{}])[0].get("message", {}).get("content", "")

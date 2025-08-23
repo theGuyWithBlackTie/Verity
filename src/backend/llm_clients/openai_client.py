@@ -12,7 +12,10 @@ class OpenAILLMClient(BaseLLMClient):
 
     def generate_text(self, prompt):
         """Get the output from the OpenAI model."""
-        response = self.call(prompt)
+        messages = [
+            {"role": "user", "content": prompt}
+        ]
+        response = self._call(messages)
         
         # Assuming the response is a JSON string, we parse it
         try:

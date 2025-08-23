@@ -11,7 +11,10 @@ class OllamaQwenLLMClient(BaseLLMClient):
 
     def generate_text(self, prompt):
         """Get the output from the Ollama Qwen model."""
-        response = self.call(prompt)
+        messages = [
+            {"role": "user", "content": prompt}
+        ]
+        response = self._call(prompt)
 
         # Removing <think> tokens from the response
         response = response.split("</think>")[1].strip()
